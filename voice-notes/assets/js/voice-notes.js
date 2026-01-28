@@ -100,6 +100,7 @@
     const capturedText = modal.querySelector('[data-vn-captured-text]');
     const startOver = modal.querySelector('[data-vn-start-over]');
     const submitButton = modal.querySelector('[data-vn-submit]');
+    const submitWrapper = modal.querySelector('[data-vn-submit-wrapper]');
     const consentCheckbox = modal.querySelector('input[name="vn_consent"]');
     const errorBox = modal.querySelector('[data-vn-error]');
     const stateIdle = modal.querySelector('[data-vn-state="idle"]');
@@ -123,6 +124,18 @@
     const maxSeconds = Number(modal.dataset.maxSeconds || settings.hardMaxSeconds || 90);
     const recordLimit = Number(settings.recordLimit || 900);
 
+    const updateSubmitState = () => {
+      const hasRecording = !!audioBlob;
+      const canSubmit = hasRecording && consentCheckbox.checked;
+      submitButton.disabled = !canSubmit;
+      const tooltipText = settings.strings?.consentTooltip || 'Please tick the consent checkbox to submit your comment.';
+      if (!consentCheckbox.checked) {
+        submitWrapper?.setAttribute('title', tooltipText);
+      } else {
+        submitWrapper?.removeAttribute('title');
+      }
+    };
+
     const resetState = () => {
       mediaRecorder = null;
       audioChunks = [];
@@ -136,7 +149,7 @@
       timer.textContent = `${formatTime(0)} `;
       timer.appendChild(timerMax);
       timerMax.textContent = `max ${formatTime(maxSeconds)}`;
-      submitButton.disabled = true;
+      updateSubmitState();
       hideError();
       if (waveformCanvas) {
         stopWaveform(waveformCanvas);
@@ -153,11 +166,6 @@
     const hideError = () => {
       errorBox.textContent = '';
       errorBox.hidden = true;
-    };
-
-    const updateSubmitState = () => {
-      const hasRecording = !!audioBlob;
-      submitButton.disabled = !(hasRecording && consentCheckbox.checked);
     };
 
     const openModal = () => {
