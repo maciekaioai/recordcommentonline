@@ -402,6 +402,7 @@ function vn_enqueue_assets() {
 				'stopBeforeClose' => __( 'Stop the recording before closing.', 'voice-notes' ),
 				'noRecording'    => __( 'Please record your voice note before submitting.', 'voice-notes' ),
 				'consentRequired' => __( 'Please confirm consent to continue.', 'voice-notes' ),
+				'consentTooltip' => __( 'Please tick the consent checkbox to submit your comment.', 'voice-notes' ),
 				'uploadFailed'   => __( 'Upload failed. Please try again.', 'voice-notes' ),
 				'networkFailed'  => __( 'Upload failed. Please check your connection and try again.', 'voice-notes' ),
 				'captured'       => __( 'Recording captured (%s seconds)', 'voice-notes' ),
@@ -479,7 +480,9 @@ function vn_shortcode( $atts ) {
 				</label>
 				<input type="text" class="vn-honeypot" name="website" tabindex="-1" autocomplete="off" />
 				<div class="vn-error" role="alert" data-vn-error="true" hidden></div>
-				<button type="button" class="vn-submit" data-vn-submit="true" disabled><?php esc_html_e( 'Submit recording', 'voice-notes' ); ?></button>
+				<span class="vn-submit-wrapper" data-vn-submit-wrapper="true">
+					<button type="button" class="vn-submit" data-vn-submit="true" disabled><?php esc_html_e( 'Submit recording', 'voice-notes' ); ?></button>
+				</span>
 				<p class="vn-footer">
 					<?php esc_html_e( 'Prefer to call instead?', 'voice-notes' ); ?>
 					<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $atts['phone'] ) ); ?>" class="vn-phone"><?php echo esc_html( $atts['phone'] ); ?></a>
