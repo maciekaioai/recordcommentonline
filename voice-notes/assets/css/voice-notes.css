@@ -1,0 +1,263 @@
+.vn-open-button {
+  background: #d31725;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.vn-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.vn-modal.is-open {
+  display: flex;
+}
+
+.vn-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.vn-modal__dialog {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  max-width: 560px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.vn-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.vn-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.vn-subtitle {
+  margin: 0 0 1.5rem;
+  color: #666;
+}
+
+.vn-recorder {
+  text-align: center;
+}
+
+.vn-mic {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #d31725;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.vn-mic.is-recording {
+  background: #d31725;
+}
+
+.vn-mic__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d31725;
+}
+
+.vn-mic.is-recording .vn-mic__icon {
+  background: #fff;
+}
+
+.vn-helper {
+  margin: 1rem 0 0.5rem;
+  color: #666;
+}
+
+.vn-timer {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.vn-timer__max {
+  font-weight: 400;
+  color: #999;
+  margin-left: 0.5rem;
+}
+
+.vn-waveform {
+  height: 60px;
+  background: #f6f2f2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.vn-waveform--captured {
+  background: linear-gradient(90deg, #d31725 0%, #d31725 30%, #e7e3e3 30%, #e7e3e3 100%);
+}
+
+.vn-capture {
+  margin-bottom: 1rem;
+}
+
+.vn-captured-text {
+  margin: 0.5rem 0;
+}
+
+.vn-start-over {
+  background: none;
+  border: none;
+  color: #d31725;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.vn-fields {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.vn-field span {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.vn-field input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #f7f7f7;
+}
+
+.vn-consent {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.vn-submit {
+  width: 100%;
+  background: #d31725;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.vn-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.vn-footer {
+  text-align: center;
+  color: #666;
+}
+
+.vn-phone {
+  color: #d31725;
+  margin-left: 0.25rem;
+  text-decoration: none;
+}
+
+.vn-error {
+  background: #fff1f1;
+  color: #b30000;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.vn-success {
+  text-align: center;
+}
+
+.vn-success__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #d31725;
+  margin: 0 auto 1rem;
+  position: relative;
+}
+
+.vn-success__icon::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 26px;
+  width: 20px;
+  height: 36px;
+  border: solid #d31725;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.vn-success__title {
+  margin: 0 0 0.5rem;
+}
+
+.vn-success__message {
+  margin: 0 0 1.5rem;
+  color: #666;
+}
+
+.vn-close-success {
+  background: #d31725;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.vn-honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+@media (max-width: 600px) {
+  .vn-modal__dialog {
+    padding: 1.5rem;
+  }
+
+  .vn-mic {
+    width: 70px;
+    height: 70px;
+  }
+}
