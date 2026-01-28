@@ -71,6 +71,7 @@
   border-radius: 50%;
   border: 4px solid #d31725;
   background: #fff;
+  color: #d31725;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,12 +86,26 @@
 .vn-mic__icon {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: #d31725;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: inherit;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.vn-mic__icon::before {
+  content: '🎙️';
 }
 
 .vn-mic.is-recording .vn-mic__icon {
-  background: #fff;
+  color: #fff;
+}
+
+.vn-mic.is-recording .vn-mic__icon::before {
+  content: '■';
+  font-size: 22px;
 }
 
 .vn-helper {
