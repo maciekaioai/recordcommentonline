@@ -123,12 +123,25 @@ function vn_add_caps() {
 register_activation_hook( __FILE__, 'vn_add_caps' );
 
 function vn_upload_mimes( $mimes ) {
-	$mimes['webm'] = 'audio/webm';
+	$mimes['webm'] = 'video/webm';
+	$mimes['weba'] = 'audio/webm';
 	$mimes['ogg']  = 'audio/ogg';
+	$mimes['oga']  = 'audio/ogg';
 	$mimes['m4a']  = 'audio/mp4';
+	$mimes['mp4']  = 'audio/mp4';
+	$mimes['mp3']  = 'audio/mpeg';
+	$mimes['wav']  = 'audio/wav';
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'vn_upload_mimes' );
+
+function vn_allow_audio_webm( $data, $file, $filename, $mimes ) {
+	if ( ! empty( $data['ext'] ) && 'webm' === $data['ext'] && 'audio/webm' === $data['type'] ) {
+		$data['type'] = 'video/webm';
+	}
+	return $data;
+}
+add_filter( 'wp_check_filetype_and_ext', 'vn_allow_audio_webm', 10, 4 );
 
 function vn_register_rest_routes() {
 	register_rest_route(
@@ -259,9 +272,14 @@ function vn_handle_submission( WP_REST_Request $request ) {
 	$overrides = array(
 		'test_form' => false,
 		'mimes'     => array(
-			'webm' => 'audio/webm',
+			'webm' => 'video/webm',
+			'weba' => 'audio/webm',
 			'ogg'  => 'audio/ogg',
+			'oga'  => 'audio/ogg',
 			'm4a'  => 'audio/mp4',
+			'mp4'  => 'audio/mp4',
+			'mp3'  => 'audio/mpeg',
+			'wav'  => 'audio/wav',
 		),
 	);
 
