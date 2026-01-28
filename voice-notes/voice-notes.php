@@ -303,7 +303,14 @@ function vn_handle_submission( WP_REST_Request $request ) {
 		$attachment_id = wp_insert_attachment( $attachment, $uploaded['file'] );
 		if ( $attachment_id ) {
 			require_once ABSPATH . 'wp-admin/includes/image.php';
-			wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $uploaded['file'] ) );
+			$metadata = array();
+			$is_video = ( 0 === strpos( $attachment['post_mime_type'], 'video/' ) );
+			if ( ! $is_video || function_exists( 'wp_read_video_metadata' ) ) {
+				$metadata = wp_generate_attachment_metadata( $attachment_id, $uploaded['file'] );
+			}
+			if ( ! empty( $metadata ) ) {
+				wp_update_attachment_metadata( $attachment_id, $metadata );
+			}
 		}
 	}
 
