@@ -27,7 +27,7 @@ function vn_default_settings() {
 		'max_file_size_mb'    => 15,
 		'attach_up_to_mb'     => 10,
 		'rate_limit_per_hour' => 3,
-		'consent_text'        => __( 'I agree this recording may be edited for clarity and used in Editor Takes.', 'voice-notes' ),
+		'consent_text'        => __( '* I agree this recording may be edited for clarity and used in Editor Takes.', 'voice-notes' ),
 		'button_label'        => __( 'Leave a voice note', 'voice-notes' ),
 		'success_title'       => __( "Thanks, we've got your take", 'voice-notes' ),
 		'success_message'     => __( 'We review all submissions and may feature them in a future episode.', 'voice-notes' ),
