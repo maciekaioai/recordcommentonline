@@ -143,6 +143,19 @@ function vn_allow_audio_webm( $data, $file, $filename, $mimes ) {
 }
 add_filter( 'wp_check_filetype_and_ext', 'vn_allow_audio_webm', 10, 4 );
 
+function vn_allow_ios_audio_types( $data, $file, $filename, $mimes ) {
+	if ( empty( $data['ext'] ) ) {
+		return $data;
+	}
+	$allowed_exts = array( 'm4a', 'mp4' );
+	$allowed_types = array( 'audio/mp4', 'audio/x-m4a', 'video/mp4' );
+	if ( in_array( $data['ext'], $allowed_exts, true ) && in_array( $data['type'], $allowed_types, true ) ) {
+		$data['type'] = 'audio/mp4';
+	}
+	return $data;
+}
+add_filter( 'wp_check_filetype_and_ext', 'vn_allow_ios_audio_types', 11, 4 );
+
 function vn_register_rest_routes() {
 	register_rest_route(
 		'voice-notes/v1',

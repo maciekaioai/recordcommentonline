@@ -311,6 +311,8 @@
         'audio/webm': 'webm',
         'audio/ogg': 'ogg',
         'audio/mp4': 'm4a',
+        'audio/x-m4a': 'm4a',
+        'video/mp4': 'mp4',
       };
       const mimeType = audioBlob.type.split(';')[0];
       const extension = extensionMap[mimeType] || 'webm';
